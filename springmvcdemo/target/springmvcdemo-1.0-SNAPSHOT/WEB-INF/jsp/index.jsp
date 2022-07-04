@@ -13,5 +13,6 @@
     </head>
     <body>
         <h1>Hello Hưng Gà Lắm á!</h1>
+        <h2>Hello ${name}</h2>
     </body>
 </html>
