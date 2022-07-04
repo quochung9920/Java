@@ -1,0 +1,3 @@
+com\mycompany\configs\WebApplicationContextConfig.class
+com\mycompany\controllers\HomeController.class
+com\mycompany\configs\DispatcherServletInitializer.class
