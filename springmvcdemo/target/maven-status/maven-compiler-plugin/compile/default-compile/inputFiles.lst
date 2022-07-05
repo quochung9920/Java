@@ -1,4 +1,11 @@
-c:\Users\quoch\Desktop\Java\springmvcdemo\src\main\java\com\mycompany\configs\WebApplicationContextConfig.java
-c:\Users\quoch\Desktop\Java\springmvcdemo\src\main\java\com\mycompany\configs\DispatcherServletInitializer.java
-c:\Users\quoch\Desktop\Java\springmvcdemo\src\main\java\com\mycompany\controllers\HomeController.java
-c:\Users\quoch\Desktop\Java\springmvcdemo\src\main\java\com\mycompany\pojos\User.java
+C:\Users\quoch\Desktop\Java\springmvcdemo\src\main\java\com\mycompany\configs\WebApplicationContextConfig.java
+C:\Users\quoch\Desktop\Java\springmvcdemo\src\main\java\com\mycompany\pojos\Category.java
+C:\Users\quoch\Desktop\Java\springmvcdemo\src\main\java\com\mycompany\configs\DispatcherServletInitializer.java
+C:\Users\quoch\Desktop\Java\springmvcdemo\src\main\java\com\mycompany\configs\HibernateConfig.java
+C:\Users\quoch\Desktop\Java\springmvcdemo\src\main\java\com\mycompany\pojos\SaleOrder.java
+C:\Users\quoch\Desktop\Java\springmvcdemo\src\main\java\com\mycompany\controllers\HomeController.java
+C:\Users\quoch\Desktop\Java\springmvcdemo\src\main\java\com\mycompany\pojos\Product.java
+C:\Users\quoch\Desktop\Java\springmvcdemo\src\main\java\com\mycompany\pojos\User.java
+C:\Users\quoch\Desktop\Java\springmvcdemo\src\main\java\com\mycompany\pojos\OrderDetail.java
+C:\Users\quoch\Desktop\Java\springmvcdemo\src\main\java\com\mycompany\configs\TilesConfig.java
+C:\Users\quoch\Desktop\Java\springmvcdemo\src\main\java\com\mycompany\pojos\Manufacturer.java
