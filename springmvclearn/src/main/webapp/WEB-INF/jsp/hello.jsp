@@ -13,5 +13,6 @@
     </head>
     <body>
         <h1>${message}</h1>
+        <h1>FROM INDEX: ${testMsg}</h1>
     </body>
 </html>
