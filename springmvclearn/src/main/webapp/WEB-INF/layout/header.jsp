@@ -14,11 +14,13 @@
         <a class="nav-link" href="/">Trang chủ</a>
       </li>
       <c:forEach var="cate" items="${categories}">
-        
         <li class="nav-item">
             <a class="nav-link" href="#">${cate.name}</a>
         </li>
-      
-        </c:forEach>
+      </c:forEach>
+
+      <li class="nav-item">
+        <a class="nav-link" href="<c:url value="/cart" />">Gio hang</a>
+    </li>
     </ul>
 </nav>

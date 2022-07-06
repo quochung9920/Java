@@ -12,23 +12,34 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.nqh.pojos.User;
 import com.nqh.service.CategoryService;
+import com.nqh.service.ProductService;
 
 @Controller
+@ControllerAdvice
 public class HomeController {
     @Autowired
     private CategoryService categoryService;
+    @Autowired
+    private ProductService productService;
+
+    @ModelAttribute
+    public void commonAttr(Model model){
+        model.addAttribute("categories", this.categoryService.getCategories());
+    }
 
     @RequestMapping("/")
-    public String index(Model model) {
-
-        model.addAttribute("categories", this.categoryService.getCategories());
+    public String index(Model model,
+            @RequestParam(value = "kw", required = false, defaultValue = "") String kw) {
+        model.addAttribute("products", this.productService.getProducts(kw));
         return "index";
     }
 
@@ -46,10 +57,8 @@ public class HomeController {
         return "index";
     }
 
-    @RequestMapping(path = "/test")
-    public String testRedirect(Model model){
-        model.addAttribute("testMsg", "Welcome to test page");
-        
-        return "redirect:/hello/Hung";
+    @RequestMapping(path = "/cart")
+    public String cart(Model model){
+        return "cart";
     }
 }
