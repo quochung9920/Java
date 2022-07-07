@@ -15,6 +15,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
+
 @Configuration
 @EnableWebSecurity
 @EnableTransactionManagement
@@ -40,7 +43,23 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // TODO Auto-generated method stub
-        // super.configure(http);
+        http.formLogin().loginPage("/login")
+            .usernameParameter("username").passwordParameter("password");
+
+        http.formLogin().defaultSuccessUrl("/").failureUrl("/login?error");
+
+        http.csrf().disable();
+        
+    }
+
+    @Bean
+    public Cloudinary cloudinary() {
+        Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
+                "cloud_name", "dowewywyh",
+                "api_key", "419453127197255",
+                "api_secret", "MUSfR7L-UEIsUSduvl-kYE4R6pE",
+                "secure", true
+        ));
+        return cloudinary;
     }
 }

@@ -23,4 +23,8 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="title" value="QUAN LY SAN PHAM"/>
         <put-attribute name="content" value="/WEB-INF/jsp/product.jsp"/>
     </definition>
+    <definition name="login" extends="baseLayout">
+        <put-attribute name="title" value="DANG NHAP"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/login.jsp"/>
+    </definition>
 </tiles-definitions>

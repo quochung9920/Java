@@ -21,6 +21,17 @@
 
       <li class="nav-item">
         <a class="nav-link" href="<c:url value="/cart" />">Gio hang</a>
-    </li>
+      </li>
+
+      <c:if test="${pageContext.request.userPrincipal.name == null}">
+        <li class="nav-item active">
+          <a class="nav-link text-danger" href="<c:url value="/login" />">Login</a>
+        </li>
+      </c:if>
+      <c:if test="${pageContext.request.userPrincipal.name != null}">
+        <li class="nav-item active">
+          <a class="nav-link text-danger" href="<c:url value="/" />">${pageContext.request.userPrincipal.name}</a>
+        </li>
+      </c:if>
     </ul>
 </nav>
