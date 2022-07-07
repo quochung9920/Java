@@ -8,6 +8,9 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
 <h1 class="text-center text-danger">Danh muc san pham</h1>
+<div class="form-group">
+    <a href="${url}">${url}</a>
+</div>
 
 <form acction="">
     <div class="row">

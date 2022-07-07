@@ -6,12 +6,16 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 
 @Configuration
 @EnableWebMvc
@@ -52,4 +56,22 @@ public class WebApplicationContextConfig implements WebMvcConfigurer {
         return source;
     }
 
+    @Bean
+    public CommonsMultipartResolver multipartResolver() {
+        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+        multipartResolver.setDefaultEncoding("utf-8");
+        
+        return multipartResolver;
+    }
+
+    @Bean
+    public Cloudinary cloudinary() {
+        Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
+                "cloud_name", "dowewywyh",
+                "api_key", "419453127197255",
+                "api_secret", "MUSfR7L-UEIsUSduvl-kYE4R6pE",
+                "secure", true
+        ));
+        return cloudinary;
+    }
 }

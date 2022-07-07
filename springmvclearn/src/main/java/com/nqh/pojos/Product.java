@@ -17,6 +17,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name = "product")
@@ -46,6 +49,17 @@ public class Product implements Serializable {
     )
     private Set<Manufacturer> manufacturers;
 
+    // Cột này không có dưới cơ sở dữ liệu, chỉ để lưu trữ ảnh upload lên server
+    @Transient
+    private MultipartFile file;
+
+
+    public MultipartFile getFile() {
+        return file;
+    }
+    public void setFile(MultipartFile file) {
+        this.file = file;
+    }
     public Set<Manufacturer> getManufacturers() {
         return manufacturers;
     }
