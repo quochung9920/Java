@@ -6,6 +6,10 @@
     <class>com.nqh.pojos.Category</class>
     <class>com.nqh.pojos.Product</class>
     <class>com.nqh.pojos.User</class>
+    <class>com.nqh.pojos.SaleOrder</class>
+    <class>com.nqh.pojos.ProMan</class>
+    <class>com.nqh.pojos.Comment</class>
+    <class>com.nqh.pojos.OrderDetail</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/saledb?zeroDateTimeBehavior=CONVERT_TO_NULL"/>

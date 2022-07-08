@@ -1,8 +1,5 @@
 package com.nqh.configs;
 
-import javax.persistence.Access;
-import javax.persistence.Basic;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -47,6 +44,13 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
             .usernameParameter("username").passwordParameter("password");
 
         http.formLogin().defaultSuccessUrl("/").failureUrl("/login?error");
+
+        http.logout().logoutSuccessUrl("/login");
+        
+        http.exceptionHandling().accessDeniedPage("/login?accessDenied");
+
+        http.authorizeRequests().antMatchers("/").permitAll()
+            .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')");
 
         http.csrf().disable();
         

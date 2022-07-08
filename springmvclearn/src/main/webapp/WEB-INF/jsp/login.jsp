@@ -7,6 +7,11 @@
         Da co loi xay ra khi dang nhap!
     </div>
 </c:if>
+<c:if test="${param.accessDenied != null}">
+    <div class="alert alert-danger">
+        Access Denied!!!
+    </div>
+</c:if>
 <c:url var="action" value="/login" />
 
 <form method="post" action="${action}">

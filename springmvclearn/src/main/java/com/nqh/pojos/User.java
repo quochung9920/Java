@@ -5,7 +5,9 @@
 package com.nqh.pojos;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,10 +15,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -64,9 +69,7 @@ public class User implements Serializable {
     @Column(name = "email")
     private String email;
     // @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message="Invalid phone/fax format, should be as xxx-xxx-xxxx")//if the field contains phone or fax number consider using this annotation to enforce field validation
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
+    @Size(max = 45)
     @Column(name = "phone")
     private String phone;
     @Basic(optional = false)
@@ -86,6 +89,22 @@ public class User implements Serializable {
     @Size(min = 1, max = 10)
     @Column(name = "user_role")
     private String userRole;
+    @OneToMany(mappedBy = "userId")
+    private List<SaleOrder> saleOrderList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    private List<Comment> commentList;
+    @Transient
+    private String confirmPassword;
+
+    
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
 
     public User() {
     }
@@ -94,12 +113,11 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public User(Integer id, String firstName, String lastName, String email, String phone, String username, String password, String userRole) {
+    public User(Integer id, String firstName, String lastName, String email, String username, String password, String userRole) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.phone = phone;
         this.username = username;
         this.password = password;
         this.userRole = userRole;
@@ -175,6 +193,24 @@ public class User implements Serializable {
 
     public void setUserRole(String userRole) {
         this.userRole = userRole;
+    }
+
+    @XmlTransient
+    public List<SaleOrder> getSaleOrderList() {
+        return saleOrderList;
+    }
+
+    public void setSaleOrderList(List<SaleOrder> saleOrderList) {
+        this.saleOrderList = saleOrderList;
+    }
+
+    @XmlTransient
+    public List<Comment> getCommentList() {
+        return commentList;
+    }
+
+    public void setCommentList(List<Comment> commentList) {
+        this.commentList = commentList;
     }
 
     @Override
